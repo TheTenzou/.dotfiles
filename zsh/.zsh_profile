@@ -1,0 +1,9 @@
+
+export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:$(go env GOPATH)/bin"
+
+xmodmap ~/.Xmodmap
+
+gi() {
+    goimports -local git.yabbi.me -w .
+}
