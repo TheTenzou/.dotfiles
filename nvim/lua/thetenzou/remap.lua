@@ -1,7 +1,13 @@
 vim.g.mapleader = " "
 
-vim.keymap.set("n", "<leader>e", "$")
-vim.keymap.set("n", "<leader>b", "^")
+vim.keymap.set({"n", "v"}, "<leader>e", "$")
+vim.keymap.set({"n", "v"}, "<leader>b", "^")
+vim.keymap.set("n", "/", ":set hlsearch<cr>/")
+vim.keymap.set("n", "<leader>/", function()
+    vim.opt.hlsearch = false
+end)
+
+vim.keymap.set("c", "<A-m>", "\\(.*\\)")
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("n", "<leader>pt", ":NvimTreeToggle<cr>")
@@ -36,7 +42,7 @@ end)
 
 -- vim
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+--vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 
 vim.keymap.set("n", "<leader>h", "<C-w>h")
@@ -44,20 +50,29 @@ vim.keymap.set("n", "<leader>l", "<C-w>l")
 vim.keymap.set("n", "<leader>j", "<C-w>j")
 vim.keymap.set("n", "<leader>k", "<C-w>k")
 
-vim.keymap.set("n", "<leader>wv", ":sp<cr>", { silent = true })
-vim.keymap.set("n", "<leader>wx", ":vs<cr>", { silent = true })
+vim.keymap.set("n", "<leader>wx", ":sp<cr>", { silent = true })
+vim.keymap.set("n", "<leader>wv", ":vs<cr>", { silent = true })
 vim.keymap.set("n", "<leader>wc", "<C-w>c")
 vim.keymap.set("n", "<leader>wh", "<C-w>_")
 vim.keymap.set("n", "<leader>ww", "<C-w>|")
 vim.keymap.set("n", "<leader>w=", "<C-w>=")
 
-vim.keymap.set("n", "<C-h>", ":vertical resize -2<cr>", { silent = true })
-vim.keymap.set("n", "<C-l>", ":vertical resize +2<cr>", { silent = true })
-vim.keymap.set("n", "<C-k>", ":resize +2<cr>", { silent = true })
-vim.keymap.set("n", "<C-j>", ":resize -2<cr>", { silent = true })
+vim.keymap.set("n", "<A-J>", ":vertical resize -2<cr>", { silent = true })
+vim.keymap.set("n", "<A-L>", ":vertical resize +2<cr>", { silent = true })
+vim.keymap.set("n", "<A-K>", ":resize +2<cr>", { silent = true })
+vim.keymap.set("n", "<A-J>", ":resize -2<cr>", { silent = true })
+vim.keymap.set("n", "<S-Left>", ":vertical resize -2<cr>", { silent = true })
+vim.keymap.set("n", "<S-Right>", ":vertical resize +2<cr>", { silent = true })
+vim.keymap.set("n", "<S-Up>", ":resize +2<cr>", { silent = true })
+vim.keymap.set("n", "<S-Down>", ":resize -2<cr>", { silent = true })
 
 vim.keymap.set("n", "<leader>wt", ":tabnew<cr>", { silent = true})
 vim.keymap.set("n", "<Left>", "gT")
 vim.keymap.set("n", "<Right>", "gt")
 vim.keymap.set("n", "<A-h>", "gT")
 vim.keymap.set("n", "<A-l>", "gt")
+
+vim.g.copilot_assume_mapped = true
+-- vim.keymap.set('i', '<Tab>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<M-.>', '<Plug>(copilot-next)')
+vim.keymap.set('i', '<M-,>', '<Plug>(copilot-previous)')

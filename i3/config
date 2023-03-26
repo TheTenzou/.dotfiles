@@ -150,9 +150,9 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-# bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-# bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
@@ -266,8 +266,12 @@ for_window [class="^.*"] border pixel 2
 for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
 
 # set up monitor position
+
 exec_always xrandr --output HDMI-1 --auto --left-of eDP-1
+
+exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:win_space_toggle"
 
 exec_always picom -CGb
 
 exec_always nitrogen --restore
+
