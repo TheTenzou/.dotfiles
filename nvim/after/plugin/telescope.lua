@@ -1,11 +1,12 @@
 local builtin = require('telescope.builtin')
 
-
 -- searsh
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 vim.keymap.set('n', '<leader>ps', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
+vim.keymap.set('n', '<leader>pb', builtin.buffers, {})
+vim.keymap.set('c', '<C-r>', builtin.command_history, {})
 
 -- lsp
 vim.keymap.set('n', '<leader>pr', builtin.lsp_references, {})
@@ -34,7 +35,7 @@ require('telescope').setup {
             n = {
                 ["<leader>x"] = actions.select_horizontal,
                 ["<leader>v"] = actions.select_vertical,
-                ["<leader>t"] = actions.select_tab,
+                ["<leader>c"] = actions.select_tab,
 
                 ["<leader>l"] = actions.send_to_qflist + actions.open_qflist,
                 ["<leader>sl"] = actions.send_selected_to_qflist + actions.open_qflist,
@@ -42,4 +43,3 @@ require('telescope').setup {
         }
     }
 }
-

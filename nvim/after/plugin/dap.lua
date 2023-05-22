@@ -10,6 +10,13 @@ require'dap-go'.setup {
       name = "Attach remote",
       mode = "remote",
       request = "attach",
+         substitutepath = {{
+           -- from = "${workspaceFolder}",
+           from = "/home/tenzou/go/src/github.com/tenzou/go-dap",
+           -- to = "/opt/app",
+           -- to = "/etc/dsp-jsonapi-main",
+           to = "/etc/tmp/",
+         }},   
     },
   },
 
@@ -22,6 +29,7 @@ require'dap-go'.setup {
     -- default to string "${port}" which instructs nvim-dap
     -- to start the process in a random available port
     port = "${port}"
+    -- port = "40005",
   },
 }
 
@@ -34,7 +42,7 @@ vim.keymap.set("n", "<leader>dx", ":lua require'dap'.terminate()<CR>", {silent =
 vim.keymap.set("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", {silent = true})
 vim.keymap.set("n", "<leader>dB", ":lua require'dap'.set_breakpoint(vim.fn.input('Breackpoint condition: '))<CR>", {silent = true})
 --vim.keymap.set("n", "<leader>lp", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
-vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", {silent = true})
+-- vim.keymap.set("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", {silent = true})
 vim.keymap.set("n", "<leader>dt", ":lua require('dap-go').debug_test()<CR>", {silent = true})
 
 require'dapui'.setup()
@@ -59,3 +67,37 @@ local sign = vim.fn.sign_define
 sign("DapBreakpoint", { text = "●", texthl = "DapBreakpoint", linehl = "", numhl = ""})
 sign("DapBreakpointCondition", { text = "●", texthl = "DapBreakpointCondition", linehl = "", numhl = ""})
 sign("DapLogPoint", { text = "◆", texthl = "DapLogPoint", linehl = "", numhl = ""})
+
+local dap = require'dap'
+
+local dapp = {
+  adapters = {
+    go = {
+      id = "go",  
+      type = "server",
+      host = "127.0.0.1",
+      port = 40005,
+    }
+  },
+  configurations = {
+    go = {
+      {
+         type = "go",
+         name = "delve container debug",
+         request = "attach",
+         mode = "remote",
+         substitutepath = {{
+           from = "${workspaceFolder}",
+           to = "/opt/app",
+           -- to = "/etc/dsp-jsonapi-main",
+           to = "/etc/tmp/",
+         }},   
+      }
+    },
+  }
+}
+
+-- dap.adapters.go = dapp.adapters.go
+-- dap.configurations.go = dapp.configurations.go
+-- table.insert(dap.configurations.go, dapp.configurations.go)
+-- table.insert(dap.adapters.go, dapp.adapters.go)

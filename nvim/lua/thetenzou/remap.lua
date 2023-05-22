@@ -1,11 +1,10 @@
+
 vim.g.mapleader = " "
 
 vim.keymap.set({"n", "v"}, "<leader>e", "$")
 vim.keymap.set({"n", "v"}, "<leader>b", "^")
 vim.keymap.set("n", "/", ":set hlsearch<cr>/")
-vim.keymap.set("n", "<leader>/", function()
-    vim.opt.hlsearch = false
-end)
+vim.keymap.set("n", "<leader>/", ":let @/ = \"\"<cr>")
 
 vim.keymap.set("c", "<A-m>", "\\(.*\\)")
 
@@ -72,7 +71,22 @@ vim.keymap.set("n", "<Right>", "gt")
 vim.keymap.set("n", "<A-h>", "gT")
 vim.keymap.set("n", "<A-l>", "gt")
 
-vim.g.copilot_assume_mapped = true
--- vim.keymap.set('i', '<Tab>', '<Plug>(copilot-next)')
+
+vim.keymap.set("i", "<Tab>", function()
+    print(vim.b._copilot_completion)
+    if vim.b._copilot_completion ~= nil then
+        vim.cmd("call copilot#Accept()")
+    else
+        vim.cmd("call copilot#Suggest()")
+    end
+end, { silent = true})
+
+--vim.g.copilot_assume_mapped = true
+-- vim.keymap.set('i', '<Tab>', '<Plug>(copilot-suggest)')
+--vim.keymap.set('i', '<S->', '<Plug>(copilot-dismiss)')
+--vim.keymap.set('i', '<Tab>', 'copilot#Accept("<CR>")', {expr=true, silent=true})
 vim.keymap.set('i', '<M-.>', '<Plug>(copilot-next)')
 vim.keymap.set('i', '<M-,>', '<Plug>(copilot-previous)')
+
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
+--vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h')

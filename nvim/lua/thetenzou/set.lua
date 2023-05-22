@@ -1,3 +1,7 @@
+
+vim.o.termguicolors = true
+
+vim.o.termguicolors = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
@@ -44,3 +48,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGai
   pattern = { "*" },
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "go",
+	command = "set autoindent noexpandtab tabstop=4 shiftwidth=4"
+})

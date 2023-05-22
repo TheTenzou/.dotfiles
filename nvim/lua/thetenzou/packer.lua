@@ -54,6 +54,7 @@ return require('packer').startup(function(use)
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
     }
+    use 'nvim-treesitter/nvim-treesitter-context'
 
     use {
         'nvim-tree/nvim-tree.lua',
@@ -70,7 +71,8 @@ return require('packer').startup(function(use)
         end
     }
 
-    use "Pocco81/auto-save.nvim"
+    -- use "Pocco81/auto-save. nvim"
+    use "zoriya/auto-save.nvim"
 
     -- debug
     use 'mfussenegger/nvim-dap'

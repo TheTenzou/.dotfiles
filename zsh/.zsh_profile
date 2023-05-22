@@ -1,8 +1,60 @@
-
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$HOME/.scripts"
+export EDITOR="/usr/bin/nvim"
+export LFPREVDIR="~"
 
 gi() {
     echo "run goimports"
     goimports -local git.yabbi.me -w .
 }
+
+function prompt_lf() {
+  p10k segment -f 208 -i '📂' -t "$LF_LEVEL" -c "$LF_LEVEL"
+}
+
+LFCD="/home/tenzou/.config/lf/lfcd.sh"
+if [ -f "$LFCD" ]; then
+    source "$LFCD"
+fi
+
+alias vim='nvim'
+alias v='nvim'
+alias gzip='gzip -k -9'
+
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
+
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363a4f,gutter:-1,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+--prompt='❯ ' --pointer='→ ' --marker='❯ ' \
+--header='(づ ◕‿◕ )づ' --header-first \
+--info=hidden \
+--border=none \
+--scroll-off=5 "
+export FZF_CTRL_R_OPTS="--height 60% --layout=reverse"
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range :500 {}'"
+export FZF_ALT_C_OPTS="--preview 'exa --color=always --icons --group-directories-first --git --long --no-user {}'"
+
+ftmux() {
+    ~/.local/scripts/tmux-session-switcher
+}
+
+ptmux() {
+    ~/.local/scripts/tmux-sessionizer
+}
+
+
+ntmux() {
+  local session
+  path1="$(realpath ${1:-$PWD})"
+  session="$(basename $(dirname "$path1") | tr . _)/$(basename "$path1" | tr . _)"
+  tmux new-session -s "$session" -c "$path1" 
+}
+

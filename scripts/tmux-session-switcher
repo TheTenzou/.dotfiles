@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ -z "$TMUX" ]; then
+  session=$(tmux ls -F '#{session_name}' | fzf --height 40% --layout=reverse --header='' --bind 'ctrl-a:print-query')
+  if [ -n "$session" ]; then
+    if ! tmux has-session -t "$session" 2>/dev/null; then
+      tmux new-session -s "$session"
+      exit 0
+    fi
+    tmux attach-session -t "$session"
+  fi
+else 
+  session=$(tmux ls -F '#{session_name}' | fzf-tmux -p --border=rounded --header='' --bind 'ctrl-a:print-query')
+  if [ -n "$session" ]; then
+    if ! tmux has-session -t "$session" 2>/dev/null; then
+      tmux new-session -s "$session" -d
+    fi
+    tmux switch-client -t "$session"
+  fi
+fi
+

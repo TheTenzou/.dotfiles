@@ -13,7 +13,8 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
 	['<A-k>'] = cmp.mapping.select_prev_item(cmp_select),
 	['<A-j>'] = cmp.mapping.select_next_item(cmp_select),
 	['<Enter>'] = cmp.mapping.confirm({ select = true }),
-	['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<Tab>'] = cmp.config.disable,
 })
 
 local lspkind = require('lspkind')
@@ -30,7 +31,7 @@ cmp.setup({
     },
     experimental = {
         native_menu = false,
-        ghost_text = true
+        ghost_text = false
     },
     matching = {
         disallow_fuzzy_matching = true,
@@ -41,7 +42,7 @@ lsp.setup_nvim_cmp({
 	mapping = cmp_mappings
 })
 
-lsp.on_attach(function(client, bufnr)
+local on_attach = function(client, bufnr)
 	local opns = {buffer = bufnr, remap = false}
 
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -72,6 +73,43 @@ lsp.on_attach(function(client, bufnr)
             source = "always",  -- Or "if_many"
         },
     })
-end)
+end
+
+lsp.on_attach(on_attach)
+
+lsp.set_sign_icons({
+    error = '✘',
+    warn = '▲',
+    hint = '⚑',
+    info = '»'
+})
 
 lsp.setup()
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+require('lspconfig').gopls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    cmd = {"gopls"},
+    filetypes = {"go", "gomod", "gowork", "gotmpl"},
+    root_dir = require('lspconfig').util.root_pattern("go.mod", ".git"),
+    settings = {
+        gopls = {
+            analyses = {
+                unusedparams = true,
+                shadow = true,
+                nilness = true,
+                fieldalignment = true,
+                unusedwrite = true,
+                useany = true,
+                unusedvariable = true,
+            },
+            -- staticcheck = true,
+            completeUnimported = true,
+            usePlaceholders = true,
+            gofumpt = true,
+        },
+    },
+})
+

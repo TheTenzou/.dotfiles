@@ -1,5 +1,7 @@
 
 require("auto-save").setup {
+    -- trigger_events = {"InsertLeave", "TextChanged"},
+    trigger_events = {"FocusLost"},
     condition = function(buf)
         local fn = vim.fn
         local fn = vim.fn
@@ -12,6 +14,12 @@ require("auto-save").setup {
 		end
 		return false -- can't save
     end,
+    callbacks = {
+        before_saving = function()
+            print("before_saving")
+            -- vim.lsp.buf.format() 
+        end
+    }
 }
 
 
