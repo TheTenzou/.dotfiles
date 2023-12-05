@@ -314,8 +314,8 @@ exec_always xrandr --output HDMI-1 --auto --left-of eDP-1
 
 exec_always "setxkbmap -model pc104 -layout us,ru -variant ,, -option grp:win_space_toggle"
 
-# exec_always picom -CGb --backend glx --blur-method="dual_kawase" --blur-strength=3
 exec_always picom -CGb --backend glx 
+# exec_always picom -CGb
 exec_always nitrogen --restore
 
 exec_always --no-startup-id ~/.config/polybar/launch.sh &

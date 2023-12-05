@@ -108,7 +108,7 @@ require('lspconfig').gopls.setup({
             -- staticcheck = true,
             completeUnimported = true,
             usePlaceholders = true,
-            gofumpt = true,
+            -- gofumpt = true,
         },
     },
 })

@@ -10,7 +10,7 @@ if [ -z "$TMUX" ]; then
     tmux attach-session -t "$session"
   fi
 else 
-  session=$(tmux ls -F '#{session_name}' | fzf-tmux -p --border=rounded --header='' --bind 'ctrl-a:print-query')
+  session=$(tmux ls -F '#{session_name}' | fzf-tmux -p --border=rounded --color=border:#b7bdf8 --header='' --bind 'ctrl-a:print-query')
   if [ -n "$session" ]; then
     if ! tmux has-session -t "$session" 2>/dev/null; then
       tmux new-session -s "$session" -d

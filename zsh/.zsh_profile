@@ -18,10 +18,12 @@ if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
 
+alias ll='exa -l --icons --group-directories-first --git --long --no-user'
 alias vim='nvim'
 alias v='nvim'
 alias gzip='gzip -k -9'
 
+ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets pattern cursor)
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
 ZSH_HIGHLIGHT_STYLES[path_prefix]=none
@@ -33,14 +35,17 @@ export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,gutter:-1,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
 --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
+--color=border:#b7bdf8 \
 --prompt='❯ ' --pointer='→ ' --marker='❯ ' \
 --header='(づ ◕‿◕ )づ' --header-first \
 --info=hidden \
 --border=none \
 --scroll-off=5 "
 export FZF_CTRL_R_OPTS="--height 60% --layout=reverse"
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=numbers --line-range :500 {}'"
-export FZF_ALT_C_OPTS="--preview 'exa --color=always --icons --group-directories-first --git --long --no-user {}'"
+export FZF_CTRL_T_OPTS="--preview '~/.local/scripts/fzf-preview {}'"
+export FZF_ALT_C_OPTS="--preview '~/.local/scripts/fzf-preview {}'"
+
+export EXA_COLORS="ur=32:gr=32:tr=32:uw=33:gw=33:tw=33:ux=35:ue=35:gx=35:tx=35:di=34"
 
 ftmux() {
     ~/.local/scripts/tmux-session-switcher

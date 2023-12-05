@@ -2,6 +2,7 @@
 require("auto-save").setup {
     -- trigger_events = {"InsertLeave", "TextChanged"},
     trigger_events = {"FocusLost"},
+    print_enabled = true,
     condition = function(buf)
         local fn = vim.fn
         local fn = vim.fn
@@ -9,7 +10,7 @@ require("auto-save").setup {
 
 		if
 			fn.getbufvar(buf, "&modifiable") == 1 and
-			utils.not_in(fn.getbufvar(buf, "&filetype"), {"gitcommit"}) then
+			utils.not_in(fn.getbufvar(buf, "&filetype"), {"gitcommit", ""}) then
 			return true -- met condition(s), can save
 		end
 		return false -- can't save
@@ -25,7 +26,6 @@ require("auto-save").setup {
 
 function FileType()
     local bufn = vim.fn.bufnr('%')
-    print(bufn)
+    print("buf num", bufn)
     local var = vim.fn.getbufvar(bufn, "&filetype")
-    print(var)
-end
+    print("file type'" ,var,"'") end

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Check if the input is a directory
+if [ -d "$1" ]; then
+  # Preview directories using exa
+  exa -l --icons --group-directories-first --git --long --no-user  "$1"
+else
+  # Preview files using bat
+  bat --style=grid --color=always --pager=never "$1"
+fi

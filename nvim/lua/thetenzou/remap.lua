@@ -55,6 +55,24 @@ vim.keymap.set("n", "<leader>wc", "<C-w>c")
 vim.keymap.set("n", "<leader>wh", "<C-w>_")
 vim.keymap.set("n", "<leader>ww", "<C-w>|")
 vim.keymap.set("n", "<leader>w=", "<C-w>=")
+vim.keymap.set("n", "<leader>wn", "<C-w>n")
+vim.keymap.set("n", "<leader>wo", "<C-w>o")
+
+vim.keymap.set("n", "<leader>wi", ":vs|term<cr>")
+
+-- move buffers
+vim.keymap.set("n", "<leader>wr", "<C-w>r")
+vim.keymap.set("n", "<leader>wR", "<C-w>R")
+vim.keymap.set("n", "<leader>wh", "<C-w>H")
+vim.keymap.set("n", "<leader>wj", "<C-w>J")
+vim.keymap.set("n", "<leader>wk", "<C-w>K")
+vim.keymap.set("n", "<leader>wl", "<C-w>L")
+
+vim.keymap.set("n", "<leader>wt", ":tabnew<cr>", { silent = true})
+vim.keymap.set("n", "<Left>", "gT")
+vim.keymap.set("n", "<Right>", "gt")
+vim.keymap.set("n", "<A-h>", "gT")
+vim.keymap.set("n", "<A-l>", "gt")
 
 vim.keymap.set("n", "<A-J>", ":vertical resize -2<cr>", { silent = true })
 vim.keymap.set("n", "<A-L>", ":vertical resize +2<cr>", { silent = true })
@@ -65,11 +83,6 @@ vim.keymap.set("n", "<S-Right>", ":vertical resize +2<cr>", { silent = true })
 vim.keymap.set("n", "<S-Up>", ":resize +2<cr>", { silent = true })
 vim.keymap.set("n", "<S-Down>", ":resize -2<cr>", { silent = true })
 
-vim.keymap.set("n", "<leader>wt", ":tabnew<cr>", { silent = true})
-vim.keymap.set("n", "<Left>", "gT")
-vim.keymap.set("n", "<Right>", "gt")
-vim.keymap.set("n", "<A-h>", "gT")
-vim.keymap.set("n", "<A-l>", "gt")
 
 
 vim.keymap.set("i", "<Tab>", function()

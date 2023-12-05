@@ -16,7 +16,6 @@ return require('packer').startup(function(use)
     }
     use 'nvim-telescope/telescope-media-files.nvim'
 
-
     -- themes 
     use 'AlexvZyl/nordic.nvim'
     use { "catppuccin/nvim", as = "catppuccin" }
@@ -29,6 +28,16 @@ return require('packer').startup(function(use)
     use 'numToStr/Comment.nvim'
     use 'onsails/lspkind.nvim'
     use 'github/copilot.vim'
+    use 'christoomey/vim-tmux-navigator'
+    use 'HiPhish/rainbow-delimiters.nvim'
+    use({
+        "kdheepak/lazygit.nvim",
+        -- optional for floating window border decoration
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
+    use "IndianBoy42/tree-sitter-just"
 
     -- lsp and treesitter requird for autocomplite 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})

@@ -145,6 +145,11 @@ _G.packer_plugins = {
     path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/theprimeagen/harpoon"
   },
+  ["lazygit.nvim"] = {
+    loaded = true,
+    path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/lazygit.nvim",
+    url = "https://github.com/kdheepak/lazygit.nvim"
+  },
   ["lsp-zero.nvim"] = {
     loaded = true,
     path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
@@ -240,6 +245,11 @@ _G.packer_plugins = {
     path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["rainbow-delimiters.nvim"] = {
+    loaded = true,
+    path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/rainbow-delimiters.nvim",
+    url = "https://github.com/HiPhish/rainbow-delimiters.nvim"
+  },
   ["rest.nvim"] = {
     loaded = true,
     path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/rest.nvim",
@@ -260,6 +270,11 @@ _G.packer_plugins = {
     path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["tree-sitter-just"] = {
+    loaded = true,
+    path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/tree-sitter-just",
+    url = "https://github.com/IndianBoy42/tree-sitter-just"
+  },
   undotree = {
     loaded = true,
     path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/undotree",
@@ -269,6 +284,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-tmux-navigator"] = {
+    loaded = true,
+    path = "/home/tenzou/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
+    url = "https://github.com/christoomey/vim-tmux-navigator"
   }
 }
 
