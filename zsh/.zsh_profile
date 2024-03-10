@@ -63,3 +63,4 @@ ntmux() {
   tmux new-session -s "$session" -c "$path1" 
 }
 
+bindkey "^[e" edit-command-line
