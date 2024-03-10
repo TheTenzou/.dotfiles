@@ -1,6 +1,6 @@
 require("catppuccin").setup({
     flavour = "macchiato", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
+    background = {         -- :h background
         light = "latte",
         dark = "mocha",
     },
@@ -13,27 +13,27 @@ require("catppuccin").setup({
         percentage = 0.15,
     },
     no_italic = false, -- Force no italic
-    no_bold = false, -- Force no bold
+    no_bold = false,   -- Force no bold
     styles = {
         comments = { "italic" },
-        conditionals = { },
+        conditionals = {},
         loops = {},
-        functions = {"italic"},
+        functions = { "italic" },
         keywords = {},
         strings = {},
         variables = {},
         numbers = {},
         booleans = {},
         properties = {},
-        types = {"italic"},
+        types = { "italic" },
         operators = {},
     },
     color_overrides = {},
-    custom_highlights = { 
-        LineNr = { fg = "#6E738D", }, 
-        StatusLine = { bg = "#2d3147", fg = "#a1a8c9"},
-        StatusLineNC = { bg = "#2d3147", fg = "#6E738D"},
-        NvimTreeStatuslineNc = { bg = "#2d3147", fg = "#6E738D"},
+    custom_highlights = {
+        LineNr = { fg = "#6E738D", },
+        StatusLine = { bg = "#2d3147", fg = "#a1a8c9" },
+        StatusLineNC = { bg = "#2d3147", fg = "#6E738D" },
+        NvimTreeStatuslineNc = { bg = "#2d3147", fg = "#6E738D" },
     },
     integrations = {
         cmp = true,
@@ -42,7 +42,7 @@ require("catppuccin").setup({
         telescope = true,
         notify = false,
         mini = false,
-        harpoon = true, 
+        harpoon = true,
         treesitter = true,
         dap = {
             enabled = true,
@@ -67,26 +67,4 @@ require("catppuccin").setup({
     },
 })
 
-function ColorMyPencils(color)
-
-	color = color or "catppuccin"
-	vim.cmd.colorscheme(color)
-
---	vim.api.nvim_set_hl(0, "Normal", { bg = "none"})
---	vim.api.nvim_set_hl(0, "NormalNC", { bg = "none"})
---	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none"})
---	vim.api.nvim_set_hl(0, "NeogitDiffDeleteHighlight", { bg = "none"})
---	vim.api.nvim_set_hl(0, "NeogitDiffAddHighlight", { bg = "none"})
-
---vim.api.nvim_set_hl(0, "NeogitDiffContextHighlight", { bg = "none"})
---vim.api.nvim_set_hl(0, "NeogitHunkHeaderHighlight", { bg = "none"})
---vim.api.nvim_set_hl(0, "NeoGitHunkHeader", { bg = "none"})
-
---	vim.api.nvim_set_hl(0, "SignColumn", { bg = "none"})
---	vim.api.nvim_set_hl(0, "NvimtreeCursorLine", { bg = "none"})
-
-
-end
-
-ColorMyPencils()
-
+vim.cmd.colorscheme("catppuccin")
